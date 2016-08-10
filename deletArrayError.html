@@ -1,0 +1,42 @@
+
+<!-- 使用splice对数组进行删除时将出现删除不完全的情况，例子如下 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		window.onload = function(){
+			delArray();
+		}
+
+		//删除数组元素操作
+		function delArray(){
+			//定义一个a为4有5项的数组，数组长度为11
+			var arr = [{'a':1},{'a':4},{'a':3},{'a':4},{'a':2},{'a':5},{'a':4},{'a':4},{'a':2},{'a':3},{'a':4}];
+			
+			//调用setArray函数
+			setArray(arr);
+
+			// 代码运行后得到的结果为7   ，总长度为11，含有4的元素有5个，按理说最后数组的长度应该是6才对
+			document.write(arr.length);
+		}
+
+		//解决方法，新建一个函数
+		function setArray(arr){
+			//遍历该数组
+			for(var i=0;i<arr.length;i++){
+				//如果arr[i].a==4，则删除该元素，且退出该循环
+				if(arr[i].a==4){
+					arr.splice(i,1);
+				}
+			}		
+		}
+		
+	</script>
+</body>
+</html>
